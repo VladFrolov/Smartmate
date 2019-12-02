@@ -13,6 +13,7 @@
 		8C4C3D4D2394D79400E36BF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4C3D4C2394D79400E36BF1 /* Assets.xcassets */; };
 		8C4C3D502394D79400E36BF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4C3D4F2394D79400E36BF1 /* Preview Assets.xcassets */; };
 		8C4C3D532394D79400E36BF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C4C3D512394D79400E36BF1 /* LaunchScreen.storyboard */; };
+		8CADE9ED239587F000B16863 /* String+Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CADE9EC239587F000B16863 /* String+Core.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8C4C3D4F2394D79400E36BF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8C4C3D522394D79400E36BF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C4C3D542394D79400E36BF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CADE9EC239587F000B16863 /* String+Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Core.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +58,10 @@
 		8C4C3D452394D79200E36BF1 /* Smartmate */ = {
 			isa = PBXGroup;
 			children = (
-				8C4C3D462394D79200E36BF1 /* AppDelegate.swift */,
-				8C4C3D482394D79200E36BF1 /* SceneDelegate.swift */,
-				8C4C3D4A2394D79200E36BF1 /* ContentView.swift */,
-				8C4C3D4C2394D79400E36BF1 /* Assets.xcassets */,
-				8C4C3D512394D79400E36BF1 /* LaunchScreen.storyboard */,
-				8C4C3D542394D79400E36BF1 /* Info.plist */,
+				8CADE9F12395893E00B16863 /* App */,
+				8CADE9EB239583EA00B16863 /* Core */,
+				8CADE9EA2395839D00B16863 /* Resource */,
+				8CADE9E92395837F00B16863 /* Environments */,
 				8C4C3D4E2394D79400E36BF1 /* Preview Content */,
 			);
 			path = Smartmate;
@@ -73,6 +73,81 @@
 				8C4C3D4F2394D79400E36BF1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8CADE9E92395837F00B16863 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				8C4C3D542394D79400E36BF1 /* Info.plist */,
+			);
+			path = Environments;
+			sourceTree = "<group>";
+		};
+		8CADE9EA2395839D00B16863 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				8C4C3D512394D79400E36BF1 /* LaunchScreen.storyboard */,
+				8C4C3D4C2394D79400E36BF1 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		8CADE9EB239583EA00B16863 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8CADE9F02395890F00B16863 /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8CADE9F02395890F00B16863 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8CADE9EC239587F000B16863 /* String+Core.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8CADE9F12395893E00B16863 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8CADE9F52395899300B16863 /* Logic */,
+				8CADE9F42395898600B16863 /* Entity */,
+				8CADE9F32395896900B16863 /* Assembly */,
+				8CADE9F22395895300B16863 /* Flows */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8CADE9F22395895300B16863 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				8C4C3D4A2394D79200E36BF1 /* ContentView.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		8CADE9F32395896900B16863 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8CADE9F42395898600B16863 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		8CADE9F52395899300B16863 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				8C4C3D462394D79200E36BF1 /* AppDelegate.swift */,
+				8C4C3D482394D79200E36BF1 /* SceneDelegate.swift */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +224,7 @@
 				8C4C3D472394D79200E36BF1 /* AppDelegate.swift in Sources */,
 				8C4C3D492394D79200E36BF1 /* SceneDelegate.swift in Sources */,
 				8C4C3D4B2394D79200E36BF1 /* ContentView.swift in Sources */,
+				8CADE9ED239587F000B16863 /* String+Core.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +364,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Smartmate/Preview Content\"";
 				DEVELOPMENT_TEAM = VSM5Z233VL;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Smartmate/Info.plist;
+				INFOPLIST_FILE = Smartmate/Environments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +384,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Smartmate/Preview Content\"";
 				DEVELOPMENT_TEAM = VSM5Z233VL;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Smartmate/Info.plist;
+				INFOPLIST_FILE = Smartmate/Environments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
