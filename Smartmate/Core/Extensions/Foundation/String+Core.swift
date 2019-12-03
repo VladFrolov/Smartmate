@@ -14,6 +14,10 @@ public extension String {
         return Int(self)
     }
     
+    var isNotEmpty: Bool {
+        return !isEmpty
+    }
+    
     var nonEmptyString: String? {
         if isEmpty {
             return nil
