@@ -10,7 +10,7 @@ import SwiftUI
 
 struct InformationView: View {
     @EnvironmentObject var viewModel: InformationViewModel
-    @State var changingProfileInfo: Bool = false
+    @State private var changingProfileInfo: Bool = false
     
     var body: some View {
         NavigationView {

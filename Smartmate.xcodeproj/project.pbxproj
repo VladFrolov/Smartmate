@@ -23,6 +23,8 @@
 		8CF68FC7239A8D6400CD0652 /* BookmarksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF68FC6239A8D6400CD0652 /* BookmarksViewModel.swift */; };
 		8CF68FC9239A8D9600CD0652 /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF68FC8239A8D9600CD0652 /* InformationViewModel.swift */; };
 		8CF68FCB239A90B900CD0652 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF68FCA239A90B900CD0652 /* ProfileModel.swift */; };
+		8CFAD08B239AA4640016ACA9 /* ScreenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFAD08A239AA4640016ACA9 /* ScreenType.swift */; };
+		8CFAD08D239AA4B60016ACA9 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFAD08C239AA4B60016ACA9 /* TabItem.swift */; };
 		8CFB52982396A51200EEB267 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB52972396A51200EEB267 /* TaskModel.swift */; };
 		8CFB529A2396A52200EEB267 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB52992396A52200EEB267 /* BookmarkModel.swift */; };
 		8CFB529F2396A73200EEB267 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB529E2396A73200EEB267 /* BookmarkView.swift */; };
@@ -48,6 +50,8 @@
 		8CF68FC6239A8D6400CD0652 /* BookmarksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewModel.swift; sourceTree = "<group>"; };
 		8CF68FC8239A8D9600CD0652 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
 		8CF68FCA239A90B900CD0652 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		8CFAD08A239AA4640016ACA9 /* ScreenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenType.swift; sourceTree = "<group>"; };
+		8CFAD08C239AA4B60016ACA9 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		8CFB52972396A51200EEB267 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		8CFB52992396A52200EEB267 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		8CFB529E2396A73200EEB267 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
@@ -157,7 +161,7 @@
 		8CADE9F22395895300B16863 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				8C4C3D4A2394D79200E36BF1 /* MainTabView.swift */,
+				8CFAD089239AA4480016ACA9 /* TabView */,
 				8CFB529D2396A70B00EEB267 /* Tasks */,
 				8CFB529C2396A6FF00EEB267 /* Bookmarks */,
 				8CFB52A92396AE4000EEB267 /* Information */,
@@ -216,6 +220,16 @@
 				8CF68FC8239A8D9600CD0652 /* InformationViewModel.swift */,
 			);
 			path = Information;
+			sourceTree = "<group>";
+		};
+		8CFAD089239AA4480016ACA9 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				8CFAD08A239AA4640016ACA9 /* ScreenType.swift */,
+				8C4C3D4A2394D79200E36BF1 /* MainTabView.swift */,
+				8CFAD08C239AA4B60016ACA9 /* TabItem.swift */,
+			);
+			path = TabView;
 			sourceTree = "<group>";
 		};
 		8CFB529C2396A6FF00EEB267 /* Bookmarks */ = {
@@ -329,6 +343,7 @@
 				8CFB529A2396A52200EEB267 /* BookmarkModel.swift in Sources */,
 				8C4C3D472394D79200E36BF1 /* AppDelegate.swift in Sources */,
 				8CF5169C2396D50B0041C47B /* ProfileView.swift in Sources */,
+				8CFAD08D239AA4B60016ACA9 /* TabItem.swift in Sources */,
 				8CD4F1032395A427008CA6D7 /* TaskList.swift in Sources */,
 				8C4C3D492394D79200E36BF1 /* SceneDelegate.swift in Sources */,
 				8CF68FC9239A8D9600CD0652 /* InformationViewModel.swift in Sources */,
@@ -339,6 +354,7 @@
 				8CF68FC5239A8D0500CD0652 /* TasksViewModel.swift in Sources */,
 				8C4C3D4B2394D79200E36BF1 /* MainTabView.swift in Sources */,
 				8CFB52982396A51200EEB267 /* TaskModel.swift in Sources */,
+				8CFAD08B239AA4640016ACA9 /* ScreenType.swift in Sources */,
 				8CFB52A82396ACA800EEB267 /* TaskView.swift in Sources */,
 				8CADE9ED239587F000B16863 /* String+Core.swift in Sources */,
 			);
