@@ -9,24 +9,24 @@
 import SwiftUI
 
 struct InformationView: View {
-    
-    @State private var showingProfile: Bool = false
+    @EnvironmentObject var viewModel: InformationViewModel
+    @State var changingProfileInfo: Bool = false
     
     var body: some View {
         NavigationView {
             EmptyView()
-            .navigationBarTitle("Information")
+            .navigationBarTitle("About Profile")
             .navigationBarItems(trailing: infoButton)
         }
     }
     
     var infoButton: some View {
         Button(action: {
-            self.showingProfile = true
+            self.changingProfileInfo.toggle()
         }) {
-            Text("Profile")
+            Text("Edit")
         }
-        .sheet(isPresented: $showingProfile) {
+        .sheet(isPresented: $changingProfileInfo) {
             ProfileView()
         }
     }

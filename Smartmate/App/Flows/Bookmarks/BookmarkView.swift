@@ -1,5 +1,5 @@
 //
-//  ServiceView.swift
+//  BookmarkView.swift
 //  Smartmate
 //
 //  Created by Владислав Фролов on 03.12.2019.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ServiceView: View {
+struct BookmarkView: View {
     var body: some View {
-        Text("Service")
+        Text("Bookmark")
     }
 }
 
-struct ServiceView_Previews: PreviewProvider {
+struct BookmarkView_Previews: PreviewProvider {
     static var previews: some View {
-        ServiceView()
+        BookmarkView()
     }
 }

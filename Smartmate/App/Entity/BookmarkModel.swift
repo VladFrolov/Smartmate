@@ -1,5 +1,5 @@
 //
-//  ServiceModel.swift
+//  BookmarkModel.swift
 //  Smartmate
 //
 //  Created by Владислав Фролов on 03.12.2019.
@@ -8,13 +8,8 @@
 
 import Foundation
 
-struct ServiceModel: Identifiable {
+struct BookmarkModel: Identifiable {
     
-    var id: String
+    let id: String = UUID().uuidString
     var name: String
-    
-    init(name: String) {
-        self.id = UUID().uuidString
-        self.name = name
-    }
 }

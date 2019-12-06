@@ -9,16 +9,11 @@
 import SwiftUI
 
 struct TaskList: View {
-    
-    @State var tasks = [
-        TaskModel(name: "Task №1"),
-        TaskModel(name: "Task №2"),
-        TaskModel(name: "Task №3")
-    ]
+    @EnvironmentObject var viewModel: TasksViewModel
     
     var body: some View {
         NavigationView {
-            List(tasks) { task in
+            List(viewModel.tasks) { task in
                 NavigationLink(task.name, destination: TaskView())
             }
             .navigationBarTitle("Tasks")

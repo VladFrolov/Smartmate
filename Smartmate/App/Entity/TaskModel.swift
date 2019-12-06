@@ -10,11 +10,6 @@ import Foundation
 
 struct TaskModel: Identifiable {
     
-    var id: String
+    let id: String = UUID().uuidString
     var name: String
-    
-    init(name: String) {
-        self.id = UUID().uuidString
-        self.name = name
-    }
 }

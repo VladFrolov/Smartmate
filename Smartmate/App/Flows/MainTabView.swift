@@ -10,7 +10,7 @@ import SwiftUI
 
 enum Screen: Int {
     case tasks = 0
-    case services = 1
+    case bookmarks = 1
     case information = 2
     
     var tag: Int {
@@ -21,8 +21,8 @@ enum Screen: Int {
         switch self {
         case .tasks:
             return "flag.circle.fill"
-        case .services:
-            return "dollarsign.circle.fill"
+        case .bookmarks:
+            return "book.circle.fill"
         case .information:
             return "person.crop.circle.fill"
         }
@@ -30,21 +30,26 @@ enum Screen: Int {
 }
 
 struct MainTabView: View {
+    @State var selected: Screen = .tasks
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selected) {
             TaskList()
+                .environmentObject(TasksViewModel())
                 .tabItem({
                     TabItem(icon: Screen.tasks.icon, title: "Tasks")
                 })
                 .tag(Screen.tasks.tag)
-            ServiceList()
+            BookmarkList()
+                .environmentObject(BookmarksViewModel())
                 .tabItem({
-                    TabItem(icon: Screen.services.icon, title: "Services")
+                    TabItem(icon: Screen.bookmarks.icon, title: "Bookmarks")
                 })
-                .tag(Screen.services.tag)
+                .tag(Screen.bookmarks.tag)
             InformationView()
+                .environmentObject(InformationViewModel())
                 .tabItem({
-                    TabItem(icon: Screen.information.icon, title: "Info")
+                    TabItem(icon: Screen.information.icon, title: "Me")
                 })
                 .tag(Screen.information.tag)
         }
