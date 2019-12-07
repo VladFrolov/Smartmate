@@ -10,14 +10,13 @@ import SwiftUI
 
 struct BookmarkList: View {
     @EnvironmentObject var viewModel: BookmarksViewModel
-    @State private var showFavorite: Bool = false
     
     var body: some View {
         NavigationView {
             List {
-                Toggle("Favorite only", isOn: $showFavorite)
+                Toggle("Favorite only", isOn: $viewModel.showFavorite)
                 ForEach(viewModel.bookmarks) { bookmark in
-                    NavigationLink(bookmark.name, destination: BookmarkView())
+                    BookmarkRow(bookmark: bookmark)
                 }
             }
             .navigationBarTitle("Bookmarks")

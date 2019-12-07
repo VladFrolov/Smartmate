@@ -11,5 +11,8 @@ import Foundation
 struct BookmarkModel: Identifiable {
     
     let id: String = UUID().uuidString
+    
     var name: String
+    var image: String
+    var isFavorite: Bool = false
 }

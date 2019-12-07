@@ -15,7 +15,7 @@ struct InformationView: View {
     var body: some View {
         NavigationView {
             EmptyView()
-            .navigationBarTitle("About Profile")
+            .navigationBarTitle("About me")
             .navigationBarItems(trailing: infoButton)
         }
     }

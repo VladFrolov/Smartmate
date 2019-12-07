@@ -14,7 +14,7 @@ struct TaskList: View {
     var body: some View {
         NavigationView {
             List(viewModel.tasks) { task in
-                NavigationLink(task.name, destination: TaskView())
+                TaskRow(task: task)
             }
             .navigationBarTitle("Tasks")
         }

@@ -11,6 +11,10 @@ import Combine
 
 final class TasksViewModel: ObservableObject {
     
-    @Published var tasks: [TaskModel] = [TaskModel(name: "Попить кофе")]
+    @Published var tasks: [TaskModel] = [TaskModel(name: "Сделать вьюхи с описанием", description: "Сделать описание bookmarks, tasks и profile"),
+                                         TaskModel(name: "Добавить CoreData"),
+                                         TaskModel(name: "Написать mock-сервер", description: "Написать небольшой mock-сервер для имитации загрузки данных"),
+                                         TaskModel(name: "Доработать UI"),
+                                         TaskModel(name: "Попить кофе")]
     
 }

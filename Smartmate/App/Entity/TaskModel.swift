@@ -11,5 +11,8 @@ import Foundation
 struct TaskModel: Identifiable {
     
     let id: String = UUID().uuidString
+    
     var name: String
+    var description: String?
+    var isResolved: Bool = false
 }

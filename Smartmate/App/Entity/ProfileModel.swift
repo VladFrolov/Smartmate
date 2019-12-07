@@ -13,7 +13,16 @@ struct ProfileModel: Identifiable {
     let id: String = UUID().uuidString
     let name: String
     let surname: String
-    
     let age: Int
-    private(set) var skills: [String]
+    
+    private(set) var skills: [String] = []
+    private(set) var links: [String] = []
+    
+    mutating func addSkills(skills: String...) {
+        self.skills.append(contentsOf: skills)
+    }
+    
+    mutating func addLinks(links: String...) {
+        self.links.append(contentsOf: links)
+    }
 }

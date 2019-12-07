@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @State var selected: Int = Screen.bookmarks.rawValue
+    @State var selected: Int = Screen.bookmarks.tag
+    
     var body: some View {
         TabView(selection: $selected) {
             BookmarkList()

@@ -13,7 +13,6 @@ final class InformationViewModel: ObservableObject {
     
     @Published var profile: ProfileModel = ProfileModel(name: "Владислав",
                                                         surname: "Фролов",
-                                                        age: 22,
-                                                        skills: ["SwiftUI", "etc."])
+                                                        age: 22)
     
 }
