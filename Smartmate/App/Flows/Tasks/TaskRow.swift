@@ -12,7 +12,7 @@ struct TaskRow: View {
     let task: TaskModel
     
     var body: some View {
-        SoaringView(cornerRadius: 20, shadow: 4) {
+        SoaringView {
             NavigationLink(destination: TaskView()) {
                 VStack(alignment: .leading) {
                     Text(task.name)

@@ -14,7 +14,7 @@ struct SoaringView<Content: View>: View {
     let cornerRadius: CGFloat
     let shadowRadius: CGFloat
     
-    init(cornerRadius: CGFloat = 16, shadow: CGFloat = 10, @ViewBuilder content: () -> Content) {
+    init(cornerRadius: CGFloat = 20, shadow: CGFloat = 4, @ViewBuilder content: () -> Content) {
         self.content = content()
         
         self.cornerRadius = cornerRadius
@@ -24,7 +24,9 @@ struct SoaringView<Content: View>: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(Color.white)
+                .fill(Color(.systemBackground))
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .stroke(Color.white, lineWidth: 2)
             content
         }
         .cornerRadius(cornerRadius)

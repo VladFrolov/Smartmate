@@ -15,6 +15,8 @@ struct BookmarkList: View {
         NavigationView {
             List {
                 Toggle("Favorite only", isOn: $viewModel.showFavorite)
+                CreateElementRow(addingItemName: "Добавить закладку",
+                                 presentedView: Text("New bookmark adding"))
                 ForEach(viewModel.bookmarks) { bookmark in
                     BookmarkRow(bookmark: bookmark)
                 }
@@ -27,5 +29,6 @@ struct BookmarkList: View {
 struct BookmarkList_Previews: PreviewProvider {
     static var previews: some View {
         BookmarkList()
+            .environmentObject(BookmarksViewModel())
     }
 }

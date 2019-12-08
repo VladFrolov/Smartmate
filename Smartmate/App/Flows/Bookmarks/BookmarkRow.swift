@@ -20,6 +20,7 @@ struct BookmarkRow: View {
                         .frame(width: 50, height: 50)
                         .cornerRadius(12)
                     Text(bookmark.name)
+                        .font(.headline)
                     Spacer()
                     Star(isActive: bookmark.isFavorite)
                 }

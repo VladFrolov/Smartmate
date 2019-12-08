@@ -13,8 +13,12 @@ struct TaskList: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.tasks) { task in
-                TaskRow(task: task)
+            List {
+                CreateElementRow(addingItemName: "Создать задачу",
+                                 presentedView: Text("New task creating"))
+                ForEach(viewModel.tasks) { task in
+                    TaskRow(task: task)
+                }
             }
             .navigationBarTitle("Tasks")
         }
@@ -24,5 +28,6 @@ struct TaskList: View {
 struct TaskList_Previews: PreviewProvider {
     static var previews: some View {
         TaskList()
+            .environmentObject(TasksViewModel())
     }
 }
