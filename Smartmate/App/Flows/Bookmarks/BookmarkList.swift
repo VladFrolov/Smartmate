@@ -12,7 +12,6 @@ struct BookmarkList: View {
     @EnvironmentObject var viewModel: BookmarksViewModel
     
     var body: some View {
-        NavigationView {
             List {
                 Toggle("Favorite only", isOn: $viewModel.showFavorite)
                 CreateElementRow(addingItemName: "Добавить закладку",
@@ -21,8 +20,7 @@ struct BookmarkList: View {
                     BookmarkRow(bookmark: bookmark)
                 }
             }
-            .navigationBarTitle("Bookmarks")
-        }
+            .embedInNavigation(title: "Bookmarks")
     }
 }
 

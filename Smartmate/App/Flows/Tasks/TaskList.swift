@@ -12,7 +12,6 @@ struct TaskList: View {
     @EnvironmentObject var viewModel: TasksViewModel
     
     var body: some View {
-        NavigationView {
             List {
                 CreateElementRow(addingItemName: "Создать задачу",
                                  presentedView: Text("New task creating"))
@@ -20,8 +19,7 @@ struct TaskList: View {
                     TaskRow(task: task)
                 }
             }
-            .navigationBarTitle("Tasks")
-        }
+            .embedInNavigation(title: "Tasks")
     }
 }
 

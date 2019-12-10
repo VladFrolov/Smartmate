@@ -13,11 +13,9 @@ struct InformationView: View {
     @State private var changingProfileInfo: Bool = false
     
     var body: some View {
-        NavigationView {
             EmptyView()
-            .navigationBarTitle("About me")
-            .navigationBarItems(trailing: infoButton)
-        }
+                .navigationBarItems(trailing: infoButton)
+                .embedInNavigation(title: "About me")
     }
     
     var infoButton: some View {

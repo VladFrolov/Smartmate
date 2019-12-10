@@ -25,7 +25,7 @@ struct BookmarkRow: View {
                     Star(isActive: bookmark.isFavorite)
                 }
             }
-        .padding()
+            .padding()
         }
     }
 }
