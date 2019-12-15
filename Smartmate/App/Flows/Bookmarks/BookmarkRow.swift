@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct BookmarkRow: View {
-    let bookmark: BookmarkModel
+    let bookmark: Bookmark
     
     var body: some View {
         SoaringView(cornerRadius: 20, shadow: 4) {
@@ -32,7 +32,7 @@ struct BookmarkRow: View {
 
 struct BookmarkRow_Previews: PreviewProvider {
     static var previews: some View {
-        BookmarkRow(bookmark: BookmarkModel(name: "Swift", image: "swift"))
+        BookmarkRow(bookmark: Bookmark(name: "Swift", image: "swift"))
             .fixedSize(horizontal: false, vertical: true)
     }
 }

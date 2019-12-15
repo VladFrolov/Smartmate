@@ -11,8 +11,8 @@ import Combine
 
 final class InformationViewModel: ObservableObject {
     
-    @Published var profile: ProfileModel = ProfileModel(name: "Владислав",
-                                                        surname: "Фролов",
-                                                        age: 22)
+    @Published var profile: Profile = Profile(name: "Владислав",
+                                              surname: "Фролов",
+                                              age: 22)
     
 }

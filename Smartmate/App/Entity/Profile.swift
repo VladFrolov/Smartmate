@@ -1,5 +1,5 @@
 //
-//  ProfileModel.swift
+//  Profile.swift
 //  Smartmate
 //
 //  Created by Владислав Фролов on 06.12.2019.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct ProfileModel: Identifiable {
+public struct Profile: Identifiable, Codable {
     
-    let id: String = UUID().uuidString
-    let name: String
-    let surname: String
-    let age: Int
+    public let id: String = UUID().uuidString
+    public let name: String
+    public let surname: String
+    public let age: Int
     
     private(set) var skills: [String] = []
     private(set) var links: [String] = []

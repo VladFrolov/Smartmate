@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TaskRow: View {
-    let task: TaskModel
+    let task: Task
     
     var body: some View {
         SoaringView {
@@ -29,7 +29,7 @@ struct TaskRow: View {
 
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
-        TaskRow(task: TaskModel(name: "Переписать CoreData менеджер", description: "Нужен рефакторинг."))
+        TaskRow(task: Task(name: "Переписать CoreData менеджер", description: "Нужен рефакторинг."))
             .fixedSize(horizontal: false, vertical: true)
     }
 }
