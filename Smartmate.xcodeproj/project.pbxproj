@@ -15,6 +15,8 @@
 		8C4C3D4D2394D79400E36BF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4C3D4C2394D79400E36BF1 /* Assets.xcassets */; };
 		8C4C3D502394D79400E36BF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4C3D4F2394D79400E36BF1 /* Preview Assets.xcassets */; };
 		8C4C3D532394D79400E36BF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C4C3D512394D79400E36BF1 /* LaunchScreen.storyboard */; };
+		8C6373AF23A8F39A00EA7065 /* CreateBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6373AE23A8F39A00EA7065 /* CreateBookmarkView.swift */; };
+		8C6373B123A8F49000EA7065 /* CreateBookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6373B023A8F49000EA7065 /* CreateBookmarkViewModel.swift */; };
 		8C8DA357239BEDB9002A9567 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DA356239BEDB9002A9567 /* TaskRow.swift */; };
 		8C940D7A23A6BC0500EE6A9A /* Smartmate_ApiSpec.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 8C940D7923A6BC0500EE6A9A /* Smartmate_ApiSpec.yaml */; };
 		8C940D8423A6BDB600EE6A9A /* AlamofireImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C940D7F23A6BDB500EE6A9A /* AlamofireImplementations.swift */; };
@@ -61,6 +63,8 @@
 		8C4C3D4F2394D79400E36BF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8C4C3D522394D79400E36BF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C4C3D542394D79400E36BF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C6373AE23A8F39A00EA7065 /* CreateBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookmarkView.swift; sourceTree = "<group>"; };
+		8C6373B023A8F49000EA7065 /* CreateBookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookmarkViewModel.swift; sourceTree = "<group>"; };
 		8C8DA356239BEDB9002A9567 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		8C940D7923A6BC0500EE6A9A /* Smartmate_ApiSpec.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = Smartmate_ApiSpec.yaml; sourceTree = "<group>"; };
 		8C940D7F23A6BDB500EE6A9A /* AlamofireImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireImplementations.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				8CF68FC6239A8D6400CD0652 /* BookmarksViewModel.swift */,
+				8C6373B023A8F49000EA7065 /* CreateBookmarkViewModel.swift */,
 				8CF68FC4239A8D0500CD0652 /* TasksViewModel.swift */,
 				8CF68FC8239A8D9600CD0652 /* InformationViewModel.swift */,
 			);
@@ -307,6 +312,7 @@
 				8CD4F1042395A5DD008CA6D7 /* BookmarkList.swift */,
 				8C49FC6D239AD87900BB319B /* BookmarkRow.swift */,
 				8CFB529E2396A73200EEB267 /* BookmarkView.swift */,
+				8C6373AE23A8F39A00EA7065 /* CreateBookmarkView.swift */,
 			);
 			path = Bookmarks;
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 				8C940D8423A6BDB600EE6A9A /* AlamofireImplementations.swift in Sources */,
 				8C49FC71239ADB5200BB319B /* Star.swift in Sources */,
 				8C4C3D472394D79200E36BF1 /* AppDelegate.swift in Sources */,
+				8C6373AF23A8F39A00EA7065 /* CreateBookmarkView.swift in Sources */,
 				8C940D8723A6BDB600EE6A9A /* Configuration.swift in Sources */,
 				8CF5169C2396D50B0041C47B /* ProfileView.swift in Sources */,
 				8CFAD08D239AA4B60016ACA9 /* TabItem.swift in Sources */,
@@ -434,6 +441,7 @@
 				8CD4F1032395A427008CA6D7 /* TaskList.swift in Sources */,
 				8C4C3D492394D79200E36BF1 /* SceneDelegate.swift in Sources */,
 				8CF68FC9239A8D9600CD0652 /* InformationViewModel.swift in Sources */,
+				8C6373B123A8F49000EA7065 /* CreateBookmarkViewModel.swift in Sources */,
 				8C940D9823A6BF1500EE6A9A /* BookmarksAPI.swift in Sources */,
 				8CD4F1052395A5DD008CA6D7 /* BookmarkList.swift in Sources */,
 				8C97FE65239BBBA700D34F5B /* SoaringView.swift in Sources */,

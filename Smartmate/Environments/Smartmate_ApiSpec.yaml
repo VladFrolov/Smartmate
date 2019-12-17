@@ -1,11 +1,11 @@
 openapi: "3.0.0"
 info:
-  version: 1.0.0
+  version: 1.0.1
   title: Smartmate API
   license:
     name: MIT
 servers:
-  - url: http://localhost:8080/v1
+  - url: http://localhost:8080
 paths:
   /bookmarks:
     get:
@@ -41,10 +41,19 @@ paths:
                 $ref: "#/components/schemas/Error"
     post:
       summary: Create a bookmark
-      operationId: createBookmarks
+      operationId: createBookmark
       tags:
         - bookmarks
+      requestBody:
+        description: JSON with new Bookmark
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Bookmark"
       responses:
+        '200':
+          description: Bookmark successful created
         '201':
           description: Null response
         default:
@@ -54,21 +63,28 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
   /bookmarks/{bookmarkId}:
-    get:
-      summary: Info for a specific bookmark
-      operationId: showBookmarkById
+    patch:
+      summary: Update a specific bookmark
+      operationId: updateBookmarkById
       tags:
         - bookmarks
       parameters:
         - name: bookmarkId
           in: path
           required: true
-          description: The id of the bookmark to retrieve
+          description: The id of the bookmark to update
           schema:
             type: string
+      requestBody:
+        description: JSON with updated Bookmark
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Bookmark"
       responses:
         '200':
-          description: Expected response to a valid request
+          description: The Bookmark successful updated
           content:
             application/json:
               schema:
@@ -113,9 +129,16 @@ paths:
                 $ref: "#/components/schemas/Error"
     post:
       summary: Create a task
-      operationId: createTasks
+      operationId: createTask
       tags:
         - tasks
+      requestBody:
+        description: JSON with new Task
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Task"
       responses:
         '201':
           description: Null response
@@ -126,8 +149,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
   /tasks/{taskId}:
-    get:
-      summary: Info for a specific task
+    patch:
+      summary: Update a specific task
       operationId: showTaskById
       tags:
         - tasks
@@ -135,12 +158,19 @@ paths:
         - name: taskId
           in: path
           required: true
-          description: The id of the task to retrieve
+          description: The id of the task to update
           schema:
             type: string
+      requestBody:
+        description: JSON with updated Task
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Task"
       responses:
         '200':
-          description: Expected response to a valid request
+          description: The Task successful updated
           content:
             application/json:
               schema:
@@ -156,20 +186,24 @@ components:
     Bookmark:
       type: object
       required:
-        - id
         - name
+        - link
         - imageUrl
-        - isFavorite
       properties:
         id:
           type: integer
           format: int64
         name:
           type: string
+        link: 
+          type: string
         imageUrl:
           type: string
         isFavorite:
           type: bool
+        dateCreate:
+          type: string
+          format: date-time
         tag:
           type: string
     Bookmarks:
@@ -179,9 +213,7 @@ components:
     Task:
       type: object
       required:
-        - id
         - name
-        - isResolved
       properties:
         id:
           type: integer
@@ -192,6 +224,12 @@ components:
           type: string
         isResolved:
           type: bool
+        dateCreate: 
+          type: string
+          format: date-time
+        dateCompetion: 
+          type: string
+          format: date-time
         tag:
           type: string
     Tasks:
