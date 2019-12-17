@@ -21,6 +21,7 @@ paths:
           schema:
             type: integer
             format: int32
+            default: 20
       responses:
         '200':
           description: A paged array of bookmarks
@@ -74,7 +75,7 @@ paths:
           required: true
           description: The id of the bookmark to update
           schema:
-            type: string
+            type: integer
       requestBody:
         description: JSON with updated Bookmark
         required: true
@@ -109,6 +110,7 @@ paths:
           schema:
             type: integer
             format: int32
+            default: 20
       responses:
         '200':
           description: A paged array of tasks
@@ -160,7 +162,7 @@ paths:
           required: true
           description: The id of the task to update
           schema:
-            type: string
+            type: integer
       requestBody:
         description: JSON with updated Task
         required: true
@@ -193,6 +195,7 @@ components:
         id:
           type: integer
           format: int64
+          readOnly: true
         name:
           type: string
         link: 
@@ -200,7 +203,7 @@ components:
         imageUrl:
           type: string
         isFavorite:
-          type: bool
+          type: boolean
         dateCreate:
           type: string
           format: date-time
@@ -218,12 +221,14 @@ components:
         id:
           type: integer
           format: int64
+          readOnly: true
         name:
           type: string
         description:
           type: string
         isResolved:
-          type: bool
+          type: boolean
+          default: false
         dateCreate: 
           type: string
           format: date-time
