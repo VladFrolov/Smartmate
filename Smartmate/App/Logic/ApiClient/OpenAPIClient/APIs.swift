@@ -7,7 +7,7 @@
 import Foundation
 
 open class OpenAPIClientAPI {
-    public static var basePath = "http://localhost:8080/v1"
+    public static var basePath = "http://localhost:8080"
     public static var credential: URLCredential?
     public static var customHeaders: [String:String] = [:]
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()

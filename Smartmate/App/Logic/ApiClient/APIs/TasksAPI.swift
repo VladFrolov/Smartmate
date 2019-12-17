@@ -7,16 +7,15 @@
 
 import Foundation
 
-
-
 open class TasksAPI {
     /**
      Create a task
      
+     - parameter task: (body) JSON with new Task 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func createTasks(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        createTasksWithRequestBuilder().execute { (response, error) -> Void in
+    open class func createTask(task: Task, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        createTaskWithRequestBuilder(task: task).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -28,27 +27,28 @@ open class TasksAPI {
     /**
      Create a task
      - POST /tasks
+     - parameter task: (body) JSON with new Task 
      - returns: RequestBuilder<Void> 
      */
-    open class func createTasksWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func createTaskWithRequestBuilder(task: Task) -> RequestBuilder<Void> {
         let path = "/tasks"
         let URLString = OpenAPIClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: task)
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**
      List all user's tasks
      
-     - parameter limit: (query) How many items to return at one time (max 100) (optional)
+     - parameter limit: (query) How many items to return at one time (max 100) (optional, default to 20)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func listTasks(limit: Int? = nil, completion: @escaping ((_ data: [Task]?,_ error: Error?) -> Void)) {
+    open class func listTasks(limit: Int = 20, completion: @escaping ((_ data: [Task]?,_ error: Error?) -> Void)) {
         listTasksWithRequestBuilder(limit: limit).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -58,17 +58,17 @@ open class TasksAPI {
      List all user's tasks
      - GET /tasks
      - responseHeaders: [x-next(String)]
-     - parameter limit: (query) How many items to return at one time (max 100) (optional)
+     - parameter limit: (query) How many items to return at one time (max 100) (optional, default to 20)
      - returns: RequestBuilder<[Task]> 
      */
-    open class func listTasksWithRequestBuilder(limit: Int? = nil) -> RequestBuilder<[Task]> {
+    open class func listTasksWithRequestBuilder(limit: Int = 20) -> RequestBuilder<[Task]> {
         let path = "/tasks"
         let URLString = OpenAPIClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "limit": limit?.encodeToJSON()
+            "limit": limit.encodeToJSON()
         ])
 
         let requestBuilder: RequestBuilder<[Task]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
@@ -77,36 +77,38 @@ open class TasksAPI {
     }
 
     /**
-     Info for a specific task
+     Update a specific task
      
-     - parameter taskId: (path) The id of the task to retrieve 
+     - parameter taskId: (path) The id of the task to update 
+     - parameter task: (body) JSON with updated Task 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func showTaskById(taskId: String, completion: @escaping ((_ data: Task?,_ error: Error?) -> Void)) {
-        showTaskByIdWithRequestBuilder(taskId: taskId).execute { (response, error) -> Void in
+    open class func showTaskById(taskId: Int, task: Task, completion: @escaping ((_ data: Task?,_ error: Error?) -> Void)) {
+        showTaskByIdWithRequestBuilder(taskId: taskId, task: task).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
     /**
-     Info for a specific task
-     - GET /tasks/{taskId}
-     - parameter taskId: (path) The id of the task to retrieve 
+     Update a specific task
+     - PATCH /tasks/{taskId}
+     - parameter taskId: (path) The id of the task to update 
+     - parameter task: (body) JSON with updated Task 
      - returns: RequestBuilder<Task> 
      */
-    open class func showTaskByIdWithRequestBuilder(taskId: String) -> RequestBuilder<Task> {
+    open class func showTaskByIdWithRequestBuilder(taskId: Int, task: Task) -> RequestBuilder<Task> {
         var path = "/tasks/{taskId}"
         let taskIdPreEscape = "\(APIHelper.mapValueToPathItem(taskId))"
         let taskIdPostEscape = taskIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{taskId}", with: taskIdPostEscape, options: .literal, range: nil)
         let URLString = OpenAPIClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: task)
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Task>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
 }

@@ -8,23 +8,23 @@
 
 import SwiftUI
 
-struct CreateBookmarkView: View {
-    
-    @EnvironmentObject var viewModel: CreateBookmarkViewModel
-    
-    @State var name: 
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Title:")
-            TextField("Enter bookmark name", text: <#T##Binding<String>#>)
-        }
-    }
-}
-
-
-struct CreateBookmarkView_Previews : PreviewProvider {
-    static var previews: some View {
-        CreateBookmarkView()
-    }
-}
+//struct CreateBookmarkView: View {
+//    
+//    @EnvironmentObject var viewModel: CreateBookmarkViewModel
+//    
+//    @State var name: 
+//    
+//    var body: some View {
+//        VStack(alignment: .leading, spacing: 16) {
+//            Text("Title:")
+//            TextField("Enter bookmark name", text: <#T##Binding<String>#>)
+//        }
+//    }
+//}
+//
+//
+//struct CreateBookmarkView_Previews : PreviewProvider {
+//    static var previews: some View {
+//        CreateBookmarkView()
+//    }
+//}

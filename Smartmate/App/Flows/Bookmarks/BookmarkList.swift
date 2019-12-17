@@ -12,15 +12,15 @@ struct BookmarkList: View {
     @EnvironmentObject var viewModel: BookmarksViewModel
     
     var body: some View {
-            List {
-                Toggle("Favorite only", isOn: $viewModel.onlyFavorite)
-                CreateElementRow(addingItemName: "Добавить закладку",
-                                 presentedView: Text("New bookmark adding"))
-                ForEach(viewModel.showedBookmarks) { bookmark in
-                    BookmarkRow(bookmark: bookmark)
-                }
+        List {
+            Toggle("Favorite only", isOn: $viewModel.onlyFavorite)
+            CreateElementRow(addingItemName: "Добавить закладку",
+                             presentedView: Text("New bookmark adding"))
+            ForEach(viewModel.showedBookmarks) { bookmark in
+                BookmarkRow(bookmark: bookmark)
             }
-            .embedInNavigation(title: "Bookmarks")
+        }
+        .embedInNavigation(title: "Bookmarks")
     }
 }
 

@@ -15,7 +15,7 @@ struct BookmarkRow: View {
         SoaringView(cornerRadius: 20, shadow: 4) {
             NavigationLink(destination: BookmarkView()) {
                 HStack {
-                    Image(bookmark.image)
+                    Image(bookmark.imageUrl)
                         .resizable()
                         .frame(width: 50, height: 50)
                         .cornerRadius(12)
@@ -32,7 +32,7 @@ struct BookmarkRow: View {
 
 struct BookmarkRow_Previews: PreviewProvider {
     static var previews: some View {
-        BookmarkRow(bookmark: Bookmark(name: "Swift", image: "swift"))
+        BookmarkRow(bookmark: Bookmark(id: 1, name: "Swift", link: "", imageUrl: "", isFavorite: false, dateCreate: Date(), tag: ""))
             .fixedSize(horizontal: false, vertical: true)
     }
 }

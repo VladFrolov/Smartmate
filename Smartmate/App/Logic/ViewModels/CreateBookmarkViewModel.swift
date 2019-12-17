@@ -7,12 +7,12 @@
 //
 
 import Combine
-
-class CreateBookmarkViewModel: ObservableObject {
-    
-    func createNewBookmark(name: String, link: String, imageUrl: String) {
-        let bookmark = Bookmark(name: name, image: imageUrl, isFavorite: false)
-        BookmarksAPI.createBookmarks(completion: <#T##((Void?, Error?) -> Void)##((Void?, Error?) -> Void)##(Void?, Error?) -> Void#>)
-    }
-    
-}
+//
+//class CreateBookmarkViewModel: ObservableObject {
+//    
+//    func createNewBookmark(name: String, link: String, imageUrl: String) {
+//        let bookmark = Bookmark(name: name, image: imageUrl, isFavorite: false)
+//        BookmarksAPI.createBookmarks(completion: <#T##((Void?, Error?) -> Void)##((Void?, Error?) -> Void)##(Void?, Error?) -> Void#>)
+//    }
+//    
+//}

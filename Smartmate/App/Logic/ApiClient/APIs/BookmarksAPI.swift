@@ -13,10 +13,11 @@ open class BookmarksAPI {
     /**
      Create a bookmark
      
+     - parameter bookmark: (body) JSON with new Bookmark 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func createBookmarks(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        createBookmarksWithRequestBuilder().execute { (response, error) -> Void in
+    open class func createBookmark(bookmark: Bookmark, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        createBookmarkWithRequestBuilder(bookmark: bookmark).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -28,27 +29,28 @@ open class BookmarksAPI {
     /**
      Create a bookmark
      - POST /bookmarks
+     - parameter bookmark: (body) JSON with new Bookmark 
      - returns: RequestBuilder<Void> 
      */
-    open class func createBookmarksWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func createBookmarkWithRequestBuilder(bookmark: Bookmark) -> RequestBuilder<Void> {
         let path = "/bookmarks"
         let URLString = OpenAPIClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: bookmark)
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**
      List all user's bookmarks
      
-     - parameter limit: (query) How many items to return at one time (max 100) (optional)
+     - parameter limit: (query) How many items to return at one time (max 100) (optional, default to 20)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func listBookmarks(limit: Int? = nil, completion: @escaping ((_ data: [Bookmark]?,_ error: Error?) -> Void)) {
+    open class func listBookmarks(limit: Int = 20, completion: @escaping ((_ data: [Bookmark]?,_ error: Error?) -> Void)) {
         listBookmarksWithRequestBuilder(limit: limit).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -58,17 +60,17 @@ open class BookmarksAPI {
      List all user's bookmarks
      - GET /bookmarks
      - responseHeaders: [x-next(String)]
-     - parameter limit: (query) How many items to return at one time (max 100) (optional)
+     - parameter limit: (query) How many items to return at one time (max 100) (optional, default to 20)
      - returns: RequestBuilder<[Bookmark]> 
      */
-    open class func listBookmarksWithRequestBuilder(limit: Int? = nil) -> RequestBuilder<[Bookmark]> {
+    open class func listBookmarksWithRequestBuilder(limit: Int = 20) -> RequestBuilder<[Bookmark]> {
         let path = "/bookmarks"
         let URLString = OpenAPIClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "limit": limit?.encodeToJSON()
+            "limit": limit.encodeToJSON()
         ])
 
         let requestBuilder: RequestBuilder<[Bookmark]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
@@ -77,36 +79,38 @@ open class BookmarksAPI {
     }
 
     /**
-     Info for a specific bookmark
+     Update a specific bookmark
      
-     - parameter bookmarkId: (path) The id of the bookmark to retrieve 
+     - parameter bookmarkId: (path) The id of the bookmark to update 
+     - parameter bookmark: (body) JSON with updated Bookmark 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func showBookmarkById(bookmarkId: String, completion: @escaping ((_ data: Bookmark?,_ error: Error?) -> Void)) {
-        showBookmarkByIdWithRequestBuilder(bookmarkId: bookmarkId).execute { (response, error) -> Void in
+    open class func updateBookmarkById(bookmarkId: Int, bookmark: Bookmark, completion: @escaping ((_ data: Bookmark?,_ error: Error?) -> Void)) {
+        updateBookmarkByIdWithRequestBuilder(bookmarkId: bookmarkId, bookmark: bookmark).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
     /**
-     Info for a specific bookmark
-     - GET /bookmarks/{bookmarkId}
-     - parameter bookmarkId: (path) The id of the bookmark to retrieve 
+     Update a specific bookmark
+     - PATCH /bookmarks/{bookmarkId}
+     - parameter bookmarkId: (path) The id of the bookmark to update 
+     - parameter bookmark: (body) JSON with updated Bookmark 
      - returns: RequestBuilder<Bookmark> 
      */
-    open class func showBookmarkByIdWithRequestBuilder(bookmarkId: String) -> RequestBuilder<Bookmark> {
+    open class func updateBookmarkByIdWithRequestBuilder(bookmarkId: Int, bookmark: Bookmark) -> RequestBuilder<Bookmark> {
         var path = "/bookmarks/{bookmarkId}"
         let bookmarkIdPreEscape = "\(APIHelper.mapValueToPathItem(bookmarkId))"
         let bookmarkIdPostEscape = bookmarkIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{bookmarkId}", with: bookmarkIdPostEscape, options: .literal, range: nil)
         let URLString = OpenAPIClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: bookmark)
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Bookmark>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
 }

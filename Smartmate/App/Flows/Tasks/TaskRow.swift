@@ -29,7 +29,7 @@ struct TaskRow: View {
 
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
-        TaskRow(task: Task(name: "Переписать CoreData менеджер", description: "Нужен рефакторинг."))
+        TaskRow(task: Task(id: 1, name: "Super Task", description: "", isResolved: false, dateCreate: Date(), dateCompetion: nil, tag: nil))
             .fixedSize(horizontal: false, vertical: true)
     }
 }
