@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BookmarkView: View {
     var body: some View {
-        Text("Bookmark")
+        WebView(request: URLRequest(url: URL(string: "https://www.apple.com/")!))
     }
 }
 

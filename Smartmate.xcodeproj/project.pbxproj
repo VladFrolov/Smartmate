@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C319D4123AAD48D00DADB7A /* UserDefaults+PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C319D4023AAD48D00DADB7A /* UserDefaults+PropertyWrapper.swift */; };
 		8C319D4423AAD95B00DADB7A /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C319D4323AAD95B00DADB7A /* AppData.swift */; };
+		8C319D4723AAE6C000DADB7A /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C319D4623AAE6C000DADB7A /* WebView.swift */; };
 		8C49FC6E239AD87900BB319B /* BookmarkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C49FC6D239AD87900BB319B /* BookmarkRow.swift */; };
 		8C49FC71239ADB5200BB319B /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C49FC70239ADB5200BB319B /* Star.swift */; };
 		8C4C3D472394D79200E36BF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C3D462394D79200E36BF1 /* AppDelegate.swift */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		8C319D4023AAD48D00DADB7A /* UserDefaults+PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+PropertyWrapper.swift"; sourceTree = "<group>"; };
 		8C319D4323AAD95B00DADB7A /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		8C319D4623AAE6C000DADB7A /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		8C49FC6D239AD87900BB319B /* BookmarkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRow.swift; sourceTree = "<group>"; };
 		8C49FC70239ADB5200BB319B /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		8C4C3D432394D79200E36BF1 /* Smartmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smartmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,9 +147,18 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		8C319D4523AAE64B00DADB7A /* RepresentableViews */ = {
+			isa = PBXGroup;
+			children = (
+				8C319D4623AAE6C000DADB7A /* WebView.swift */,
+			);
+			path = RepresentableViews;
+			sourceTree = "<group>";
+		};
 		8C49FC6F239ADB3A00BB319B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8C319D4523AAE64B00DADB7A /* RepresentableViews */,
 				8C97FE64239BBBA700D34F5B /* SoaringView.swift */,
 				8C49FC70239ADB5200BB319B /* Star.swift */,
 				8C8F295623AA8B9C005BAEA1 /* Loader.swift */,
@@ -507,6 +518,7 @@
 				8C940D8B23A6BDC300EE6A9A /* JSONEncodableEncoding.swift in Sources */,
 				8CF68FC7239A8D6400CD0652 /* BookmarksViewModel.swift in Sources */,
 				8C983CE7239FD38700BA2D10 /* RandomAccessCollection+Core.swift in Sources */,
+				8C319D4723AAE6C000DADB7A /* WebView.swift in Sources */,
 				8CF68FC5239A8D0500CD0652 /* TasksViewModel.swift in Sources */,
 				8C4C3D4B2394D79200E36BF1 /* MainTabView.swift in Sources */,
 				8C940D8823A6BDB600EE6A9A /* Extensions.swift in Sources */,
