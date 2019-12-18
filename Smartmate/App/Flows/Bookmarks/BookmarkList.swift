@@ -14,10 +14,16 @@ struct BookmarkList: View {
     var body: some View {
         List {
             Toggle("Favorite only", isOn: $viewModel.onlyFavorite)
-            CreateElementRow(addingItemName: "Добавить закладку",
+            CreateElementRow(addingItemName: "Add bookmark",
                              presentedView: Text("New bookmark adding"))
-            ForEach(viewModel.showedBookmarks) { bookmark in
-                BookmarkRow(bookmark: bookmark)
+            ForEach(viewModel.filteredBookmarks) { bookmark in
+                BookmarkRow(bookmark: bookmark).onAppear {
+                    self.viewModel.loadPageIfNeeded(bookmark)
+                }
+            }
+            
+            if viewModel.isLoading {
+                Loader()
             }
         }
         .embedInNavigation(title: "Bookmarks")

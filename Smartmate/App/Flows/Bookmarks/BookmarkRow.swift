@@ -12,13 +12,13 @@ struct BookmarkRow: View {
     let bookmark: Bookmark
     
     var body: some View {
-        SoaringView(cornerRadius: 20, shadow: 4) {
+        SoaringView {
             NavigationLink(destination: BookmarkView()) {
                 HStack {
                     Image(bookmark.imageUrl)
                         .resizable()
-                        .frame(width: 50, height: 50)
-                        .cornerRadius(12)
+                        .frame(width: 36, height: 36)
+                        .cornerRadius(8)
                     Text(bookmark.name)
                         .font(.headline)
                     Spacer()

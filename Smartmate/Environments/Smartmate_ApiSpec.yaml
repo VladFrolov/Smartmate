@@ -14,26 +14,37 @@ paths:
       tags:
         - bookmarks
       parameters:
-        - name: limit
+        - name: page
+          in: query
+          description: Number of requested page
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: per
           in: query
           description: How many items to return at one time (max 100)
           required: false
           schema:
             type: integer
             format: int32
-            default: 20
+            default: 10
       responses:
         '200':
           description: A paged array of bookmarks
-          headers:
-            x-next:
-              description: A link to the next page of responses
-              schema:
-                type: string
           content:
             application/json:    
               schema:
-                $ref: "#/components/schemas/Bookmarks"
+                type: object
+                required: 
+                  - data
+                  - page
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Bookmarks"
+                  page:
+                    $ref: "#/components/schemas/Page"
         default:
           description: unexpected error
           content:
@@ -103,26 +114,37 @@ paths:
       tags:
         - tasks
       parameters:
-        - name: limit
+        - name: page
+          in: query
+          description: Number of requested page
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: per
           in: query
           description: How many items to return at one time (max 100)
           required: false
           schema:
             type: integer
             format: int32
-            default: 20
+            default: 10
       responses:
         '200':
           description: A paged array of tasks
-          headers:
-            x-next:
-              description: A link to the next page of responses
-              schema:
-                type: string
           content:
             application/json:    
               schema:
-                $ref: "#/components/schemas/Tasks"
+                type: object
+                required: 
+                  - data
+                  - page
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Tasks"
+                  page:
+                    $ref: "#/components/schemas/Page"
         default:
           description: unexpected error
           content:
@@ -252,3 +274,33 @@ components:
           format: int32
         message:
           type: string
+    Page:
+      type: object
+      required:
+        - position
+        - data
+      properties:
+        position:
+          type: object
+          required:
+            - current
+            - max
+          properties:
+            current: 
+              type: integer
+              format: int32
+            max:
+              type: integer
+              format: int32
+        data:
+          type: object
+          required:
+            - per
+            - total
+          properties:
+            per:
+              type: integer
+              format: int32
+            total:
+              type: integer
+              format: int32

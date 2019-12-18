@@ -13,10 +13,17 @@ struct TaskList: View {
     
     var body: some View {
         List {
-            CreateElementRow(addingItemName: "Создать задачу",
+            Toggle("Unresolved only", isOn: $viewModel.onlyUnresolved)
+            CreateElementRow(addingItemName: "Create task",
                              presentedView: Text("New task creating"))
-            ForEach(viewModel.showedTasks) { task in
-                TaskRow(task: task)
+            ForEach(viewModel.filteredTasks) { task in
+                TaskRow(task: task).onAppear {
+                    self.viewModel.loadPageIfNeeded(task)
+                }
+            }
+            
+            if viewModel.isLoading {
+                Loader()
             }
         }
         .embedInNavigation(title: "Tasks")

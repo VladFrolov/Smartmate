@@ -14,7 +14,7 @@ struct SoaringView<Content: View>: View {
     let cornerRadius: CGFloat
     let shadowRadius: CGFloat
     
-    init(cornerRadius: CGFloat = 20, shadow: CGFloat = 4, @ViewBuilder content: () -> Content) {
+    init(cornerRadius: CGFloat = 12, shadow: CGFloat = 4, @ViewBuilder content: () -> Content) {
         self.content = content()
         
         self.cornerRadius = cornerRadius

@@ -13,7 +13,9 @@ final class TasksViewModel: ObservableObject {
     
     private var tasksList: [Task] = []
     
-    @Published var showedTasks: [Task] = []
+    @Published private(set) var lastPage: Int = 0
+    @Published private(set) var isLoading: Bool = false
+    @Published var filteredTasks: [Task] = []
     @Published var onlyUnresolved: Bool = false {
         didSet {
             filterTasks()
@@ -21,9 +23,32 @@ final class TasksViewModel: ObservableObject {
     }
     
     init() {
-        TasksAPI.listTasks { (tasks, error) in
+        requestData()
+    }
+    
+    func loadPageIfNeeded(_ item: Task) {
+        guard self.filteredTasks.isLastItem(item) else { return }
+        requestData()
+    }
+    
+    func requestData(limit: Int? = nil) {
+        let limit = limit ?? 10
+        requestData(page: lastPage + 1, limit: limit)
+    }
+    
+    private func requestData(page: Int, limit: Int) {
+        guard !isLoading else { return }
+        isLoading = true
+        
+        TasksAPI.listTasks(page: page, per: limit) { [weak self] (tasks, error) in
+            guard let self = self else { return }
+            self.isLoading = false
+            
             if let tasks = tasks {
-                self.tasksList = tasks
+                self.tasksList.append(contentsOf: tasks.data)
+                self.filterTasks()
+                
+                self.lastPage = tasks.page.position.current
             } else if let error = error?.localizedDescription {
                 print(error)
             }
@@ -31,6 +56,6 @@ final class TasksViewModel: ObservableObject {
     }
     
     private func filterTasks() {
-        showedTasks = onlyUnresolved ? tasksList.filter { ($0.isResolved) } : tasksList
+        filteredTasks = onlyUnresolved ? tasksList.filter { ($0.isResolved) } : tasksList
     }
 }

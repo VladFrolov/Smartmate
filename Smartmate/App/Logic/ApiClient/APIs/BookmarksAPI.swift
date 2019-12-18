@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 open class BookmarksAPI {
     /**
      Create a bookmark
@@ -47,11 +45,12 @@ open class BookmarksAPI {
     /**
      List all user's bookmarks
      
-     - parameter limit: (query) How many items to return at one time (max 100) (optional, default to 20)
+     - parameter page: (query) Number of showed page (optional, default to 1)
+     - parameter per: (query) How many items to return at one time (max 100) (optional, default to 10)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func listBookmarks(limit: Int = 20, completion: @escaping ((_ data: [Bookmark]?,_ error: Error?) -> Void)) {
-        listBookmarksWithRequestBuilder(limit: limit).execute { (response, error) -> Void in
+    open class func listBookmarks(page: Int? = nil, per: Int? = nil, completion: @escaping ((_ data: BookmarkPage?,_ error: Error?) -> Void)) {
+        listBookmarksWithRequestBuilder(page: page, per: per).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -59,21 +58,22 @@ open class BookmarksAPI {
     /**
      List all user's bookmarks
      - GET /bookmarks
-     - responseHeaders: [x-next(String)]
-     - parameter limit: (query) How many items to return at one time (max 100) (optional, default to 20)
-     - returns: RequestBuilder<[Bookmark]> 
+     - parameter page: (query) Number of showed page (optional, default to 1)
+     - parameter per: (query) How many items to return at one time (max 100) (optional, default to 10)
+     - returns: RequestBuilder<InlineResponse200> 
      */
-    open class func listBookmarksWithRequestBuilder(limit: Int = 20) -> RequestBuilder<[Bookmark]> {
+    open class func listBookmarksWithRequestBuilder(page: Int? = nil, per: Int? = nil) -> RequestBuilder<BookmarkPage> {
         let path = "/bookmarks"
         let URLString = OpenAPIClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "limit": limit.encodeToJSON()
+            "page": page?.encodeToJSON(), 
+            "per": per?.encodeToJSON()
         ])
 
-        let requestBuilder: RequestBuilder<[Bookmark]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<BookmarkPage>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

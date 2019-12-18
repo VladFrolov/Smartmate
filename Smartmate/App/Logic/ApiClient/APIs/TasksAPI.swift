@@ -45,11 +45,12 @@ open class TasksAPI {
     /**
      List all user's tasks
      
-     - parameter limit: (query) How many items to return at one time (max 100) (optional, default to 20)
+     - parameter page: (query) Number of showed page (optional, default to 1)
+     - parameter per: (query) How many items to return at one time (max 100) (optional, default to 10)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func listTasks(limit: Int = 20, completion: @escaping ((_ data: [Task]?,_ error: Error?) -> Void)) {
-        listTasksWithRequestBuilder(limit: limit).execute { (response, error) -> Void in
+    open class func listTasks(page: Int? = nil, per: Int? = nil, completion: @escaping ((_ data: TaskPage?,_ error: Error?) -> Void)) {
+        listTasksWithRequestBuilder(page: page, per: per).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -57,21 +58,22 @@ open class TasksAPI {
     /**
      List all user's tasks
      - GET /tasks
-     - responseHeaders: [x-next(String)]
-     - parameter limit: (query) How many items to return at one time (max 100) (optional, default to 20)
-     - returns: RequestBuilder<[Task]> 
+     - parameter page: (query) Number of showed page (optional, default to 1)
+     - parameter per: (query) How many items to return at one time (max 100) (optional, default to 10)
+     - returns: RequestBuilder<InlineResponse2001> 
      */
-    open class func listTasksWithRequestBuilder(limit: Int = 20) -> RequestBuilder<[Task]> {
+    open class func listTasksWithRequestBuilder(page: Int? = nil, per: Int? = nil) -> RequestBuilder<TaskPage> {
         let path = "/tasks"
         let URLString = OpenAPIClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "limit": limit.encodeToJSON()
+            "page": page?.encodeToJSON(), 
+            "per": per?.encodeToJSON()
         ])
 
-        let requestBuilder: RequestBuilder<[Task]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<TaskPage>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
