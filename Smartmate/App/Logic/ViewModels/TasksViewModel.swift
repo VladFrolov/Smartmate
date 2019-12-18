@@ -16,8 +16,9 @@ final class TasksViewModel: ObservableObject {
     @Published private(set) var lastPage: Int = 0
     @Published private(set) var isLoading: Bool = false
     @Published var filteredTasks: [Task] = []
-    @Published var onlyUnresolved: Bool = false {
+    @Published var onlyUnresolved: Bool = AppData.showOnlyUnresolved {
         didSet {
+            AppData.showOnlyUnresolved = onlyUnresolved
             filterTasks()
         }
     }

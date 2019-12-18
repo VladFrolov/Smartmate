@@ -17,8 +17,9 @@ final class BookmarksViewModel: ObservableObject {
     @Published private(set) var lastPage: Int = 0
     @Published private(set) var isLoading: Bool = false
     @Published var filteredBookmarks: [Bookmark] = []
-    @Published var onlyFavorite: Bool = false {
+    @Published var onlyFavorite: Bool = AppData.showOnlyFav {
         didSet {
+            AppData.showOnlyFav = onlyFavorite
             filterBookmarks()
         }
     }
