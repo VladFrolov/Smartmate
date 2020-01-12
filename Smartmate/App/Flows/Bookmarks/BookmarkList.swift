@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct BookmarkList: View {
-    @EnvironmentObject var viewModel: BookmarksViewModel
+    @EnvironmentObject var viewModel: BookmarkListVM
     
     var body: some View {
         List {
             Toggle("Favorite only", isOn: $viewModel.onlyFavorite)
             CreateElementRow(addingItemName: "Add bookmark",
-                             presentedView: Text("New bookmark adding"))
+                             presentedView: CreateBookmarkView())
             ForEach(viewModel.filteredBookmarks) { bookmark in
                 BookmarkRow(bookmark: bookmark).onAppear {
                     self.viewModel.loadPageIfNeeded(bookmark)
@@ -33,6 +33,6 @@ struct BookmarkList: View {
 struct BookmarkList_Previews: PreviewProvider {
     static var previews: some View {
         BookmarkList()
-            .environmentObject(BookmarksViewModel())
+            .environmentObject(BookmarkListVM())
     }
 }

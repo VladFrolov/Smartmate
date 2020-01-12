@@ -9,11 +9,12 @@
 import SwiftUI
 
 struct BookmarkRow: View {
+    @State var bookmarkShowed: Bool = false
     let bookmark: Bookmark
     
     var body: some View {
         SoaringView {
-            NavigationLink(destination: BookmarkView()) {
+            Button(action: { self.bookmarkShowed = true }) {
                 HStack {
                     Image(bookmark.imageUrl)
                         .resizable()
@@ -24,6 +25,9 @@ struct BookmarkRow: View {
                     Spacer()
                     Star(isActive: bookmark.isFavorite)
                 }
+            }.sheet(isPresented: self.$bookmarkShowed) {
+                BookmarkView(onDismiss: { self.bookmarkShowed = false })
+                    .environmentObject(BookmarkVM(link: self.bookmark.link))
             }
             .padding()
         }

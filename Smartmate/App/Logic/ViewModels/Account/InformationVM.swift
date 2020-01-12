@@ -1,5 +1,5 @@
 //
-//  InformationViewModel.swift
+//  InformationVM.swift
 //  Smartmate
 //
 //  Created by Владислав Фролов on 06.12.2019.
@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-final class InformationViewModel: ObservableObject {
+final class InformationVM: ObservableObject {
     
     @Published var profile: Profile = Profile(name: "Владислав",
                                               surname: "Фролов",

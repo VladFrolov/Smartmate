@@ -19,7 +19,7 @@ public struct Bookmark: Codable, Identifiable {
     public var dateCreate: Date?
     public var tag: String?
 
-    public init(id: Int64?, name: String, link: String, imageUrl: String, isFavorite: Bool, dateCreate: Date?, tag: String?) {
+    public init(id: Int64? = nil, name: String, link: String, imageUrl: String, isFavorite: Bool, dateCreate: Date?, tag: String?) {
         self.id = id
         self.name = name
         self.link = link

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TaskList: View {
-    @EnvironmentObject var viewModel: TasksViewModel
+    @EnvironmentObject var viewModel: TaskListVM
     
     var body: some View {
         List {
@@ -33,6 +33,6 @@ struct TaskList: View {
 struct TaskList_Previews: PreviewProvider {
     static var previews: some View {
         TaskList()
-            .environmentObject(TasksViewModel())
+            .environmentObject(TaskListVM())
     }
 }

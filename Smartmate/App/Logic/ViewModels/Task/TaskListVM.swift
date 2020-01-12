@@ -1,5 +1,5 @@
 //
-//  TasksViewModel.swift
+//  TaskListVM.swift
 //  Smartmate
 //
 //  Created by Владислав Фролов on 06.12.2019.
@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-final class TasksViewModel: ObservableObject {
+final class TaskListVM: ObservableObject {
     
     private var tasksList: [Task] = []
     
@@ -57,6 +57,6 @@ final class TasksViewModel: ObservableObject {
     }
     
     private func filterTasks() {
-        filteredTasks = onlyUnresolved ? tasksList.filter { ($0.isResolved) } : tasksList
+        filteredTasks = onlyUnresolved ? tasksList.filter { (!$0.isResolved) } : tasksList
     }
 }

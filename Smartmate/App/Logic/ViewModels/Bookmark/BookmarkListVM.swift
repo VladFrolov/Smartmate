@@ -1,5 +1,5 @@
 //
-//  BookmarksViewModel.swift
+//  BookmarkListVM.swift
 //  Smartmate
 //
 //  Created by Владислав Фролов on 06.12.2019.
@@ -10,7 +10,7 @@ import Alamofire
 import SwiftUI
 import Combine
 
-final class BookmarksViewModel: ObservableObject {
+final class BookmarkListVM: ObservableObject {
     
     private var bookmarkList: [Bookmark] = []
     

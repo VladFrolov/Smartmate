@@ -14,19 +14,19 @@ struct MainTabView: View {
     var body: some View {
         TabView(selection: $selected) {
             BookmarkList()
-                .environmentObject(BookmarksViewModel())
+                .environmentObject(BookmarkListVM())
                 .tabItem({
                     TabItem(icon: Screen.bookmarks.icon, title: "Bookmarks")
                 })
                 .tag(Screen.bookmarks.tag)
             TaskList()
-                .environmentObject(TasksViewModel())
+                .environmentObject(TaskListVM())
                 .tabItem({
                     TabItem(icon: Screen.tasks.icon, title: "Tasks")
                 })
                 .tag(Screen.tasks.tag)
             InformationView()
-                .environmentObject(InformationViewModel())
+                .environmentObject(InformationVM())
                 .tabItem({
                     TabItem(icon: Screen.information.icon, title: "Me")
                 })
